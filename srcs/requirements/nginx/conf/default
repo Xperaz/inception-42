@@ -2,18 +2,18 @@ server {
     listen 443 http2 ssl;
     listen [::]:443 http2 ssl;
 
-    server_name aouhadou.42.fr www.aouhadou.42.fr;
-
     ssl_certificate /etc/ssl/certs/aouhadou.crt;
     ssl_certificate_key /etc/ssl/private/aouhadou.key;
 
-    ssl_protocols TLSv1.3;
+    ssl_protocols TLSv1.2 TLSv1.3;
     root /var/www/html;
 
     index index.php;
 
     location / {
-    try_files $uri $uri/ /index.php?$args;
+        autoindex on;
+        autoindex_format html;
+        try_files $uri $uri/ /index.php?$args;
     }
 
     location ~ .php$ {

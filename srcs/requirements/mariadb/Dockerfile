@@ -3,7 +3,7 @@ FROM debian:buster
 RUN apt-get update -y && \
     apt-get install -y mariadb-server
 
-COPY ./conf/script.sh /tmp/script.sh
+COPY ./tools/script.sh /tmp/script.sh
 
 RUN  chmod +x /tmp/script.sh
 
