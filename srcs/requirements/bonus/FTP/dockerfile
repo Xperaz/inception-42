@@ -1,0 +1,5 @@
+FROM debian:buster
+
+COPY ./conf/script.sh .
+
+ENTRYPOINT ["sh", "script.sh"]

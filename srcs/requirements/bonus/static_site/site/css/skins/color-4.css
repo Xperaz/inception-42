@@ -1,0 +1,19 @@
+:root
+{
+    --skin-color:#1854b4;
+}
+
+a:link , a:visited{
+    color:#1854b4;
+    /* text-decoration: underline; */
+    /* cursor: auto; */
+  }
+  
+  a:link:active, a:visited:active {
+    color: (internal value);
+  }
+
+  ::-webkit-scrollbar-thumb
+  {
+      background-color: #1854b4;
+  }
