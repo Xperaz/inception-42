@@ -1,10 +1,7 @@
 #!/bin/bash
 
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 \ 
-    -keyout /etc/ssl/private/aouhadou.key \
-    -out /etc/ssl/certs/aouhadou.crt \
-    -subj="/C=MA/ST=BM/O=1337/CN=aouhadou.42.fr"
+sed -i "s/my_cert/$ssl_certificate/g" /etc/nginx/sites-available/default
+sed -i "s/my_key/$ssl_certificate_key/g" /etc/nginx/sites-available/default
+sed -i "s/DOMAIN_NAME/$nginx_domain/g" /etc/nginx/sites-available/default   
 
-mv ./conf/default /etc/nginx/sites-available/default
-
-exec "$@"
+nginx -g "daemon off;"

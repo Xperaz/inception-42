@@ -2,6 +2,11 @@ server {
     listen 443 http2 ssl;
     listen [::]:443 http2 ssl;
 
+    server_name DOMAIN_NAME.42.fr;
+    server_name www.DOMAIN_NAME.42.fr;
+
+    #SSL certificates
+    ssl on;
     ssl_certificate /etc/ssl/certs/aouhadou.crt;
     ssl_certificate_key /etc/ssl/private/aouhadou.key;
 
@@ -17,6 +22,10 @@ server {
     }
 
     location ~ .php$ {
+        if (!-f $document_root$fastcgi_script_name)
+        { 
+            return 404;
+        }
         try_files $uri =404;
         include /etc/nginx/fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
