@@ -17,4 +17,7 @@ clean:
 	rm -r /home/aouhadou/data/wordpress
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) down -v
 
+fclean: clean
+	docker system prune -a -f
+
 restart: clean build

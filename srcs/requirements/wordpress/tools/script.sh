@@ -4,7 +4,7 @@
 sleep 10
 # Install Wordpress
 
-#if [ ! -f /var/www/html/wp-config.php ]; then
+if [ ! -f /var/www/html/wp-config.php ]; then
     wp config create --dbname=$database_name --dbuser=$mysql_user \
         --dbpass=$mysql_password --dbhost=$mysql_host --allow-root  --skip-check
 
@@ -27,7 +27,7 @@ sleep 10
     wp plugin activate redis-cache --allow-root
 
     wp redis enable --allow-root
-#fi
+fi
 
 
 /usr/sbin/php-fpm7.3 -F
