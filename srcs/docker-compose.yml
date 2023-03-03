@@ -42,7 +42,15 @@ services:
     depends_on:
       - wordpress
     restart: on-failure
-  
+  redis:
+    build: ./requirements/bonus/redis
+    image: redis
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - inception_net
+    restart: on-failure
 volumes:
   mdb:
    driver_opts:
