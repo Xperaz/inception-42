@@ -1,5 +1,19 @@
 FROM debian:buster
 
-COPY ./conf/script.sh .
+ARG ftp_user \
+    ftp_pwd
 
-ENTRYPOINT ["sh", "script.sh"]
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y vsftpd
+
+RUN service vsftpd start
+
+COPY  ./tools/script.sh /tmp/script.sh
+
+RUN chmod +x /tmp/script.sh
+
+ENTRYPOINT [ "/tmp/script.sh" ]
+
+RUN service vsftpd stop
+
+CMD ["/usr/sbin/vsftpd"]

@@ -27,6 +27,14 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp plugin activate redis-cache --allow-root
 
     wp redis enable --allow-root
+
+    # install theme
+
+    wp theme install twentyfifteen
+
+    wp theme activate twentyfifteen
+
+    wp theme update twentyfifteen
 fi
 
 

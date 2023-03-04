@@ -62,6 +62,47 @@ services:
     ports:
       - "8080:8080"
     restart: on-failure
+  ftp:
+    build: ./requirements/bonus/FTP
+    image: ftp
+    container_name: ftp
+    ports:
+      - "40000-40005:40000-40005"
+      - "21:21"
+      - "20:20"
+    networks:
+      - inception_net
+    volumes:
+      - wp:/home/aouhadou/ftp
+    depends_on:
+      - wordpress
+    env_file:
+      - .env
+    restart: on-failure
+  static_site:
+    build: ./requirements/bonus/static_site
+    image: static_site
+    container_name: static_site
+    networks:
+      - inception_net
+    ports:
+      - "81:81"
+    restart: on-failure
+
+  node-js:
+    build: ./requirements/bonus/node
+    image: node-js
+    container_name: node-js
+    networks:
+      - inception_net
+    ports:
+      - "1337:1337"
+    depends_on:
+      - mariadb
+      - wordpress
+    env_file:
+      - .env
+    restart: on-failure
 volumes:
   mdb:
    driver_opts:
