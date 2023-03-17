@@ -16,6 +16,8 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 
  #   wp config  set WP_DEBUG true  --allow-root
 
+    wp config set FORCE_SSL_ADMIN 'false' --allow-root
+
     wp config  set WP_REDIS_HOST $redis_host --allow-root
 
     wp config set WP_REDIS_PORT $redis_port --allow-root
@@ -27,6 +29,8 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp plugin activate redis-cache --allow-root
 
     wp redis enable --allow-root
+
+    chmod 777 /var/www/html/wp-content
 
     # install theme
 

@@ -103,6 +103,20 @@ services:
     env_file:
       - .env
     restart: on-failure
+  cadvisor:
+    container_name: cadvisor
+    build: ./requirements/bonus/cadvisor
+    image: cadvisor
+    ports:
+       - "8000:8000"
+    networks:
+     - inception_net
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro 
+      - /sys:/sys:ro 
+      - /var/lib/docker/:/var/lib/docker:ro
+    restart: always
 volumes:
   mdb:
    driver_opts:
