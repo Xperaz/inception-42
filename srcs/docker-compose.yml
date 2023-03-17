@@ -9,7 +9,7 @@ services:
     expose:
         - "3306"
     env_file:
-      - /Users/aouhadou/Desktop/.env
+      - /home/aouhadou/Desktop/.env
     networks:
       - inception_net
     restart: on-failure
@@ -22,7 +22,7 @@ services:
     depends_on:
       - mariadb
     env_file:
-      - /Users/aouhadou/Desktop/.env
+      - /home/aouhadou/Desktop/.env
     networks:
       - inception_net
     expose:
@@ -73,11 +73,11 @@ services:
     networks:
       - inception_net
     volumes:
-      - wp:/goinfre/aouhadou/data/ftp
+      - wp:/home/aouhadou/ftp
     depends_on:
       - wordpress
     env_file:
-      - /Users/aouhadou/Desktop/.env
+      - /home/aouhadou/Desktop/.env
     restart: on-failure
   static_site:
     build: ./requirements/bonus/static_site
@@ -101,7 +101,7 @@ services:
       - mariadb
       - wordpress
     env_file:
-      - /Users/aouhadou/Desktop/.env
+      - /home/aouhadou/Desktop/.env
     restart: on-failure
   cadvisor:
     container_name: cadvisor
@@ -122,12 +122,12 @@ volumes:
    driver_opts:
       type: 'none'
       o: bind
-      device: /goinfre/aouhadou/data/mysql
+      device: /home/aouhadou/data/mysql
   wp:
    driver_opts:
       type: 'none'
       o: bind
-      device: /goinfre/aouhadou/data/wordpress
+      device: /home/aouhadou/data/wordpress
 networks:
     inception_net:
         driver: bridge
