@@ -6,8 +6,8 @@ services:
     container_name: mariadb
     volumes:
       - mdb:/var/lib/mysql
-    ports:
-        - 3306:3306
+    expose:
+        - "3306"
     env_file:
       - .env
     networks:
@@ -25,8 +25,8 @@ services:
       - .env
     networks:
       - inception_net
-    ports:
-      - 9000:9000
+    expose:
+      - "9000"
     restart: on-failure
   
   nginx:
@@ -73,7 +73,7 @@ services:
     networks:
       - inception_net
     volumes:
-      - wp:/home/aouhadou/ftp
+      - wp:/goinfre/aouhadou/data/ftp
     depends_on:
       - wordpress
     env_file:
@@ -108,26 +108,26 @@ services:
     build: ./requirements/bonus/cadvisor
     image: cadvisor
     ports:
-       - "8000:8000"
+       - "8000:8080"
     networks:
      - inception_net
     volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro 
-      - /sys:/sys:ro 
-      - /var/lib/docker/:/var/lib/docker:ro
+      - /:/rootfs
+      - /var/run:/var/run
+      - /sys:/sys
+      - /var/lib/docker/:/var/lib/docker
     restart: always
 volumes:
   mdb:
    driver_opts:
       type: 'none'
       o: bind
-      device: /home/aouhadou/data/mysql
+      device: /goinfre/aouhadou/data/mysql
   wp:
    driver_opts:
       type: 'none'
       o: bind
-      device: /home/aouhadou/data/wordpress
+      device: /goinfre/aouhadou/data/wordpress
 networks:
     inception_net:
         driver: bridge
