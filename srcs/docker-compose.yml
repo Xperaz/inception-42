@@ -9,7 +9,7 @@ services:
     expose:
         - "3306"
     env_file:
-      - .env
+      - /Users/aouhadou/Desktop/.env
     networks:
       - inception_net
     restart: on-failure
@@ -22,7 +22,7 @@ services:
     depends_on:
       - mariadb
     env_file:
-      - .env
+      - /Users/aouhadou/Desktop/.env
     networks:
       - inception_net
     expose:
@@ -77,7 +77,7 @@ services:
     depends_on:
       - wordpress
     env_file:
-      - .env
+      - /Users/aouhadou/Desktop/.env
     restart: on-failure
   static_site:
     build: ./requirements/bonus/static_site
@@ -101,7 +101,7 @@ services:
       - mariadb
       - wordpress
     env_file:
-      - .env
+      - /Users/aouhadou/Desktop/.env
     restart: on-failure
   cadvisor:
     container_name: cadvisor
