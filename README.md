@@ -200,7 +200,7 @@ The **server certificate** is a public entity. It is sent to every client that c
 
 The **private key** is a secure entity and should be stored in a file with restricted access, however, it must be readable by nginx’s master process.
 
-<img align="right" src="./img/http-vs-https.jpeg" alt="http vs https" width=40% height=40%>
+<img align="right" src="./img/https-vs-http-connections.png" alt="http vs https" width=40% height=40%>
 
 <p> <br/> <p/>
 
@@ -214,7 +214,7 @@ The **private key** is a secure entity and should be stored in a file with restr
 
 <p align="center">
     <br/> <br/> <br/>
-    <img src="./img/ssl_explained.png" alt="SSL explained" width=85% height=85%>
+    <img src="./img/ssl-tls-handshake-process-1024x670.png" alt="SSL explained" width=85% height=85%>
     <br/> <br/>
 </p>
 
