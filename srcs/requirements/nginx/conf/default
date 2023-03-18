@@ -10,7 +10,7 @@ server {
     ssl_certificate /etc/ssl/certs/aouhadou.crt;
     ssl_certificate_key /etc/ssl/private/aouhadou.key;
 
-    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_protocols TLSv1.3;
     root /var/www/html;
 
     index index.php;
